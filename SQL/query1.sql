@@ -34,3 +34,14 @@ Select * from olist_order_payments_dataset where payment_type ='credit_card';
 select * from olist_sellers_dataset where seller_state != 'SP';
 
 select * from olist_sellers_dataset where seller_state NOT IN ('SP');
+
+-- Ques 6:Find all reviews with review_score = 1 (the angriest customers)
+
+select review_id,review_score,
+review_comment_title, review_comment_message,
+review_creation_date from olist_order_reviews_dataset
+where review_score = 1;
+
+--Ques7 Find all order items where price > 500
+
+select * from olist_order_payments_dataset where payment_value > 500;
