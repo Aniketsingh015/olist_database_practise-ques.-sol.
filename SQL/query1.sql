@@ -62,4 +62,10 @@ select * from olist_order_payments_dataset where payment_type In ('voucher','deb
 select * from olist_sellers_dataset where seller_state NOT In('SP', 'RJ','MG');
 
 -- Ques4:Find all orders where order_status is 'delivered' or 'shipped'
-select * from olist_orders_dataset where order_status IN ('delivered','shipped')
+select * from olist_orders_dataset where order_status IN ('delivered','shipped');
+
+-- Ques5:BETWEEN (numeric and date ranges)
+
+-- Find all order items priced BETWEEN 100 AND 300
+select * from olist_order_items_dataset where price BETWEEN 100 AND 300;
+
