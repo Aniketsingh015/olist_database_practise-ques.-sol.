@@ -55,3 +55,6 @@ SELECT * from olist_customers_dataset where customer_state IN ('SP','RJ');
 -- Ques1 Find all customers from 'SP', 'RJ', or 'MG'
 select * from olist_customers_dataset where customer_state IN('SP','RJ','MG');
 
+-- Ques2 Find all payments where payment_type is either 'voucher' or 'debit_card'
+select * from olist_order_payments_dataset where payment_type In ('voucher','debit_card');
+
