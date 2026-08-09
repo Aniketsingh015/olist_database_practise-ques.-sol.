@@ -10,3 +10,9 @@ FROM olist_customers_dataset
 WHERE customer_state = 'SP'
 
 LIMIT 10;
+
+
+-- Question 2 :List all orders
+-- where order_status = 'delivered'
+
+select * from olist_orders_dataset where order_status="delivered";
