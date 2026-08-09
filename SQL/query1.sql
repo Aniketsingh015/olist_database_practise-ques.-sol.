@@ -45,3 +45,6 @@ where review_score = 1;
 --Ques7 Find all order items where price > 500
 
 select * from olist_order_payments_dataset where payment_value > 500;
+
+-- Find customers from either 'SP' or 'RJ' (practice IN)
+SELECT * from olist_customers_dataset where customer_state IN ('SP','RJ');
