@@ -25,3 +25,12 @@ WHERE product_category_name = "beleza_saude";
 
 --  Ques 4:Find all payments where payment_type = 'credit_card'
 Select * from olist_order_payments_dataset where payment_type ='credit_card';
+
+-- Ques5:List all sellers not located in 'SP' (practice != / <>)
+
+-- we have two approach for this when we have to do not in single condition use
+-- != and when there is more than one condition then use()
+
+select * from olist_sellers_dataset where seller_state != 'SP';
+
+select * from olist_sellers_dataset where seller_state NOT IN ('SP');
