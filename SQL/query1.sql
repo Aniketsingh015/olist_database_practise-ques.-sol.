@@ -48,3 +48,10 @@ select * from olist_order_payments_dataset where payment_value > 500;
 
 -- Find customers from either 'SP' or 'RJ' (practice IN)
 SELECT * from olist_customers_dataset where customer_state IN ('SP','RJ');
+
+
+-- IN / NOT IN
+
+-- Ques1 Find all customers from 'SP', 'RJ', or 'MG'
+select * from olist_customers_dataset where customer_state IN('SP','RJ','MG');
+
