@@ -58,3 +58,7 @@ select * from olist_customers_dataset where customer_state IN('SP','RJ','MG');
 -- Ques2 Find all payments where payment_type is either 'voucher' or 'debit_card'
 select * from olist_order_payments_dataset where payment_type In ('voucher','debit_card');
 
+-- Ques3 Find all sellers not located in 'SP', 'RJ', or 'MG' (practice NOT IN)
+select * from olist_sellers_dataset where seller_state NOT In('SP', 'RJ','MG');
+
+-- Ques4:
