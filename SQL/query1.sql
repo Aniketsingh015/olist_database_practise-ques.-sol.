@@ -64,8 +64,12 @@ select * from olist_sellers_dataset where seller_state NOT In('SP', 'RJ','MG');
 -- Ques4:Find all orders where order_status is 'delivered' or 'shipped'
 select * from olist_orders_dataset where order_status IN ('delivered','shipped');
 
--- Ques5:BETWEEN (numeric and date ranges)
+-- BETWEEN (numeric and date ranges)
 
--- Find all order items priced BETWEEN 100 AND 300
+--Ques5: Find all order items priced BETWEEN 100 AND 300
 select * from olist_order_items_dataset where price BETWEEN 100 AND 300;
+
+-- Ques 6:Find all products with product_weight_g BETWEEN 500 AND 2000
+
+select * from olist_products_dataset where product_weight_g between 500 and 2000;
 
