@@ -87,5 +87,7 @@ select * from olist_order_payments_dataset where payment_installments BETWEEN 1 
 select * from olist_orders_dataset where order_delivered_customer_date IS NULL;
 
 
+-- Find all payments where payment_installments BETWEEN 1 AND 3
+select * from olist_order_payments_dataset where payment_installments BETWEEN 1 and 3;
 
 
