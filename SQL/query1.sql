@@ -73,3 +73,9 @@ select * from olist_order_items_dataset where price BETWEEN 100 AND 300;
 
 select * from olist_products_dataset where product_weight_g between 500 and 2000;
 
+-- Ques7: Find all orders placed BETWEEN '2017-06-01' AND '2017-08-31' (using order_purchase_timestamp)
+SELECT * from olist_orders_dataset where order_purchase_timestamp BETWEEN '2017-06-01' AND '2017-08-31';
+
+-- Ques 8:Find all reviews with review_score BETWEEN 2 AND 4 (excludes both the happiest and angriest extremes)
+select * from olist_order_reviews_dataset where review_score BETWEEN 2 AND 4;
+
