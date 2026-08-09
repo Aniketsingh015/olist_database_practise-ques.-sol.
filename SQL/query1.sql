@@ -61,4 +61,5 @@ select * from olist_order_payments_dataset where payment_type In ('voucher','deb
 -- Ques3 Find all sellers not located in 'SP', 'RJ', or 'MG' (practice NOT IN)
 select * from olist_sellers_dataset where seller_state NOT In('SP', 'RJ','MG');
 
--- Ques4:
+-- Ques4:Find all orders where order_status is 'delivered' or 'shipped'
+select * from olist_orders_dataset where order_status IN ('delivered','shipped')
