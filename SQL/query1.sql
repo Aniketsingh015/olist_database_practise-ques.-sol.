@@ -79,3 +79,4 @@ SELECT * from olist_orders_dataset where order_purchase_timestamp BETWEEN '2017-
 -- Ques 8:Find all reviews with review_score BETWEEN 2 AND 4 (excludes both the happiest and angriest extremes)
 select * from olist_order_reviews_dataset where review_score BETWEEN 2 AND 4;
 
+
