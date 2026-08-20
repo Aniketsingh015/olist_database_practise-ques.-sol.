@@ -1,4 +1,4 @@
--- Count how many customers exist per customer_state
+-- The operations team wants to know how many customers you have in each state, to decide where to open new warehouses.
 
 select customer_state,count(*) from olist_customers_dataset
 group by customer_state;
@@ -23,3 +23,19 @@ select count(*),seller_state from olist_sellers_dataset GROUP BY seller_state;
 
 -- Find min and max freight_value — no grouping, whole table
 select min(freight_value),max(freight_value) from olist_order_items_dataset ;
+
+
+-- group by using where clauss
+
+
+-- Per payment_type, show COUNT(*), AVG(payment_value), and MAX(payment_value) all in one query.
+
+SELECT payment_type, COUNT(*), AVG(payment_value), MAX(payment_value)
+FROM olist_order_payments_dataset
+GROUP BY payment_type;
+
+
+-- The customer growth team wants to know, per state: how many total customers you have,
+--  and how many distinct cities those customers are spread across — to figure out if 
+-- growth is concentrated in a few big cities or spread out.
+SELECT customer_state, COUNT(*),count(DISTINCT customer_city) FROM olist_customers_dataset GROUP BY customer_state;
