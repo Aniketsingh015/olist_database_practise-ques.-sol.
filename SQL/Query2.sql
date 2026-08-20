@@ -39,3 +39,17 @@ GROUP BY payment_type;
 --  and how many distinct cities those customers are spread across — to figure out if 
 -- growth is concentrated in a few big cities or spread out.
 SELECT customer_state, COUNT(*),count(DISTINCT customer_city) FROM olist_customers_dataset GROUP BY customer_state;
+
+
+-- The category management team only cares about "meaningful" sales — they want total revenue per product, but explicitly 
+-- excluding any order item priced under ₹50/$50 (noise/test transactions). How would you build that report?
+
+select sum(price),product_id from olist_order_items_dataset where price>50 group by product_id;
+
+
+-- The reviews team wants average review score per month, but only for 2018 — 
+-- they don't want older data skewing the trend.
+SELECT * from olist_order_reviews_dataset
+
+select AVG(review_score),month(review_creation_date) from olist_order_reviews_dataset where year(review_creation_date)=2018
+group by month(review_creation_date); 
