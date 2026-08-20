@@ -12,3 +12,8 @@ group by order_status;
 
 select AVG(payment_value),payment_type from olist_order_payments_dataset
 GROUP BY payment_type;
+
+
+-- Find total price sold per product_category_name (single table, order_items only)
+select sum(price),product_id from olist_order_items_dataset group by product_id;
+-- as the product category not aviable so for now before join we have used product id
