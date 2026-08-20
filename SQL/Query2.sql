@@ -21,3 +21,5 @@ select sum(price),product_id from olist_order_items_dataset group by product_id;
 -- Count how many sellers exist per seller_state"
 select count(*),seller_state from olist_sellers_dataset GROUP BY seller_state;
 
+-- Find min and max freight_value — no grouping, whole table
+select min(freight_value),max(freight_value) from olist_order_items_dataset ;
