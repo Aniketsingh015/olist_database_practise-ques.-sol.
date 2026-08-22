@@ -60,3 +60,24 @@ select avg(payment_value),payment_type from olist_order_payments_dataset where p
 
 -- Count of reviews per review_score, but only for reviews created in the second half of 2018 (July–December).
 select count(*),review_score from olist_order_reviews_dataset where MONTH(review_creation_date) BETWEEN 7 and 12 and year(review_creation_date)=2018 GROUP BY review_score;
+
+
+-- The category team wants total price sold per product_id, but only including order items where freight_value was less than 20.
+select sum(price),product_id from olist_order_items_dataset where freight_value<20 group by product_id;
+
+-- Grouping by time (a very common real scenario)
+-- Leadership wants to see order volume trending by year — are we growing year over year?
+select count(*),year(order_purchase_timestamp) from olist_orders_dataset GROUP BY year(order_purchase_timestamp);
+
+-- The growth team wants order volume by month — but they specifically warn you: don't accidentally merge
+--  January 2017 and January 2018 into the same bucket. How do you avoid that mistake?
+SELECT YEAR(order_purchase_timestamp), MONTH(order_purchase_timestamp), COUNT(*)
+FROM olist_orders_dataset
+GROUP BY YEAR(order_purchase_timestamp), MONTH(order_purchase_timestamp);
+
+
+-- NULL-aware business questions
+-- Operations wants to know how many orders were 
+-- never marked as delivered vs how many were — they suspect a data quality or fulfillment issue.
+
+select order_delivered_customer_date is null ,count(*)from olist_orders_dataset GROUP BY order_delivered_customer_date is null;
