@@ -55,4 +55,8 @@ select AVG(review_score),month(review_creation_date) from olist_order_reviews_da
 group by month(review_creation_date); 
 
 -- The payments team wants average payment_value per payment_type, but only for transactions with payment_installments > 1.
-select avg(payment_value),payment_type from olist_order_payments_dataset where payment_installments >1 GROUP BY payment_type
+select avg(payment_value),payment_type from olist_order_payments_dataset where payment_installments >1 GROUP BY payment_type;
+
+
+-- Count of reviews per review_score, but only for reviews created in the second half of 2018 (July–December).
+select count(*),review_score from olist_order_reviews_dataset where MONTH(review_creation_date) BETWEEN 7 and 12 and year(review_creation_date)=2018 GROUP BY review_score;
