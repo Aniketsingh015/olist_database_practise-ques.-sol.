@@ -106,3 +106,21 @@ SELECT count(*),order_delivered_customer_date is NULL from olist_orders_dataset 
 --  (score ≥ 4) vs "not positive" (score < 4) — group by the expression review_score >= 4 directly
 
 select count(*) , review_score>=4 from olist_order_reviews_dataset group by review_score>=4;
+
+
+-- Finance wants payment count split into two buckets: single payment (installments = 1) vs multi-installment (installments > 1)
+select count(*), payment_installments>1 from olist_order_payments_dataset group by payment_installments>1;
+
+-- Ops wants order count per day of the month (1st, 2nd, ... 31st), regardless of
+--  which month — to check if certain days consistently see spikes (DAY(order_purchase_timestamp)
+
+select count(*),DAY(order_purchase_timestamp),MONTH(order_purchase_timestamp) from olist_orders_dataset GROUP BY DAY(order_purchase_timestamp),MONTH(order_purchase_timestamp)   ;
+
+
+-- The pricing team wants order items split into "cheap" (price < 100) vs "expensive" (price >= 100) buckets,
+--  with total revenue in each bucket
+
+select count (*) ,(price<100) as cheap from olist_order_items_dataset GROUP BY (price<100);
+
+
+
