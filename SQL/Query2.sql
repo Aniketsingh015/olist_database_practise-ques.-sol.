@@ -81,3 +81,12 @@ GROUP BY YEAR(order_purchase_timestamp), MONTH(order_purchase_timestamp);
 -- never marked as delivered vs how many were — they suspect a data quality or fulfillment issue.
 
 select order_delivered_customer_date is null ,count(*)from olist_orders_dataset GROUP BY order_delivered_customer_date is null;
+
+
+
+
+-- Pattern 6 from group by 
+-- The reviews team wants to know if review volume differs
+--  by day of week — do more reviews get left on weekends vs weekdays? (DAYNAME(review_creation_date))
+
+select count(*) , DAYNAME(review_creation_date) from olist_order_reviews_dataset group by DAYNAME(review_creation_date);
