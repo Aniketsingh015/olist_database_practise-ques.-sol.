@@ -98,4 +98,5 @@ select count(*) , DAYNAME(review_creation_date)
 
 SELECT Count(*),HOUR(order_purchase_timestamp) from olist_orders_dataset GROUP BY HOUR(order_purchase_timestamp);
 
-
+-- The delivery team wants a two-bucket split: orders that were delivered vs never delivered (order_delivered_customer_date IS NULL)
+SELECT count(*),order_delivered_customer_date is NULL from olist_orders_dataset GROUP BY order_delivered_customer_date is NULL;
