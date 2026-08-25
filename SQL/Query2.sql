@@ -124,3 +124,7 @@ select count (*) ,(price<100) as cheap from olist_order_items_dataset GROUP BY (
 
 
 
+-- Pattern 7 — Compound (multi-column) grouping
+-- The payments team wants average payment_value broken down by both payment_type and payment_installments
+
+select avg(payment_value),payment_type,payment_installments from olist_order_payments_dataset GROUP BY payment_type,payment_installments;
