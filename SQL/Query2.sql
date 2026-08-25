@@ -89,4 +89,13 @@ select order_delivered_customer_date is null ,count(*)from olist_orders_dataset 
 -- The reviews team wants to know if review volume differs
 --  by day of week — do more reviews get left on weekends vs weekdays? (DAYNAME(review_creation_date))
 
-select count(*) , DAYNAME(review_creation_date) from olist_order_reviews_dataset group by DAYNAME(review_creation_date);
+select count(*) , DAYNAME(review_creation_date)
+ from olist_order_reviews_dataset 
+ group by DAYNAME(review_creation_date);
+
+-- Question 2 Ops wants order count per hour of day the order was placed — 
+-- are most orders placed in the morning or evening? (HOUR(order_purchase_timestamp))
+
+SELECT Count(*),HOUR(order_purchase_timestamp) from olist_orders_dataset GROUP BY HOUR(order_purchase_timestamp);
+
+
