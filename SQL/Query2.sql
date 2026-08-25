@@ -100,3 +100,9 @@ SELECT Count(*),HOUR(order_purchase_timestamp) from olist_orders_dataset GROUP B
 
 -- The delivery team wants a two-bucket split: orders that were delivered vs never delivered (order_delivered_customer_date IS NULL)
 SELECT count(*),order_delivered_customer_date is NULL from olist_orders_dataset GROUP BY order_delivered_customer_date is NULL;
+
+
+-- The reviews team wants a two-bucket split: reviews that are "positive"
+--  (score ≥ 4) vs "not positive" (score < 4) — group by the expression review_score >= 4 directly
+
+select count(*) , review_score>=4 from olist_order_reviews_dataset group by review_score>=4;
