@@ -128,3 +128,26 @@ select count (*) ,(price<100) as cheap from olist_order_items_dataset GROUP BY (
 -- The payments team wants average payment_value broken down by both payment_type and payment_installments
 
 select avg(payment_value),payment_type,payment_installments from olist_order_payments_dataset GROUP BY payment_type,payment_installments;
+
+
+-- The reviews team wants average review_score broken down by both year and month separately (two columns in GROUP BY, not merged)
+
+select avg(review_score),YEAR(review_creation_date),MONTH(review_creation_date) from olist_order_reviews_dataset
+group by YEAR(review_creation_date),MONTH(review_creation_date);
+
+
+-- Ops wants order count broken down by order_status and whether the order was placed on a weekend or weekday
+select count(*) ,order_status,DAYOFWEEK(order_purchase_timestamp) In(1,7) from olist_orders_dataset
+group by order_status, DAYOFWEEK(order_purchase_timestamp)In(1,7);
+
+
+-- The pricing team wants count of order items broken down by both product_id
+--  and whether freight_value was above or below $20
+
+select count(*),product_id,freight_value<20  FROM olist_order_items_dataset GROUP BY  product_id,freight_value<20;
+
+
+-- The reviews team wants review count broken down by 
+-- review_score and whether a comment was left (review_comment_message IS NULL or not)
+
+select count(*),review_score,review_comment_message IS NULL from olist_order_reviews_dataset GROUP BY review_score,review_comment_message IS NULL;
