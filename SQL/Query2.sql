@@ -161,3 +161,12 @@ select count(*),customer_state from olist_customers_dataset group by customer_st
 
 -- Ops wants the top 3 months (merged across all years) with the highest order volume — which months tend to be busiest overall?
 select count(*),MONTH(order_purchase_timestamp) from olist_orders_dataset GROUP BY MONTH(order_purchase_timestamp) order by count(*) DESC limit 3;
+
+-- The pricing team wants the top 5 products (product_id) by total revenue from olist_order_items_dataset.
+select sum(price),product_id from olist_order_items_dataset GROUP BY product_id ORDER BY sum(price) desc limit 5;
+
+-- Finance wants the least-used payment type — the one with the smallest transaction count.
+select count(*),payment_type from olist_order_payments_dataset GROUP BY payment_type order by count(*) ASC LIMIT 1;
+
+-- The reviews team wants the 5 lowest-rated months by average review score (across all years merged).
+select AVG(review_score),MONTH(review_creation_date) from olist_order_reviews_dataset group by review_creation_date order by AVG(review_score) ASC limit 1;
