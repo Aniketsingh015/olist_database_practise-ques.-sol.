@@ -170,3 +170,9 @@ select count(*),payment_type from olist_order_payments_dataset GROUP BY payment_
 
 -- The reviews team wants the 5 lowest-rated months by average review score (across all years merged).
 select AVG(review_score),MONTH(review_creation_date) from olist_order_reviews_dataset group by review_creation_date order by AVG(review_score) ASC limit 1;
+
+-- Ops wants to know the single busiest day of the week for order placement — just the one top result, not all 7.
+SELECT count(*),day(order_purchase_timestamp) from olist_orders_dataset GROUP BY day(order_purchase_timestamp) order by count(*) asc limit 1;
+
+
+
