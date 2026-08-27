@@ -151,3 +151,10 @@ select count(*),product_id,freight_value<20  FROM olist_order_items_dataset GROU
 -- review_score and whether a comment was left (review_comment_message IS NULL or not)
 
 select count(*),review_score,review_comment_message IS NULL from olist_order_reviews_dataset GROUP BY review_score,review_comment_message IS NULL;
+
+
+
+-- Pattern 8 — Sorting/limiting grouped results (Top-N)
+-- Leadership wants the top 5 states by customer count, for an ad campaign focu
+
+select count(*),customer_state from olist_customers_dataset group by customer_state order by count(*)Desc limit 5;
