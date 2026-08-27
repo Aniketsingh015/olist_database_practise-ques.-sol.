@@ -158,3 +158,6 @@ select count(*),review_score,review_comment_message IS NULL from olist_order_rev
 -- Leadership wants the top 5 states by customer count, for an ad campaign focu
 
 select count(*),customer_state from olist_customers_dataset group by customer_state order by count(*)Desc limit 5;
+
+-- Ops wants the top 3 months (merged across all years) with the highest order volume — which months tend to be busiest overall?
+select count(*),MONTH(order_purchase_timestamp) from olist_orders_dataset GROUP BY MONTH(order_purchase_timestamp) order by count(*) DESC limit 3;
