@@ -23,4 +23,6 @@ select count(*),order_status from olist_orders_dataset where year(order_purchase
 
 
 
+-- The reviews team wants review scores that appear more than 200 times, but only among reviews that actually have a written comment.
 
+select count(*),review_score from olist_order_reviews_dataset where review_comment_message  IS NOT NULL GROUP BY review_score having count(*)>200
