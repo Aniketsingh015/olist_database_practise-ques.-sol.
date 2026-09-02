@@ -8,3 +8,11 @@ select count(*),seller_id from olist_order_items_dataset GROUP BY seller_id HAVI
 -- Finance wants to know which payment types have an average transaction value above 150 — identifying premium payment behavior.
 
 select avg(payment_value),payment_type from olist_order_payments_dataset GROUP BY payment_type having avg(payment_value)>150;
+
+
+
+-- Pattern 2 — WHERE + GROUP BY + HAVING together
+-- The category team wants products where total revenue exceeds 5000, but only counting 
+-- order items priced above 20 (filter noise first, then check the group's total).
+
+select sum(price),product_id from olist_order_items_dataset where price>20 GROUP BY product_id having sum(price)>5000;
