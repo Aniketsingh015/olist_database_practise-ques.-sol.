@@ -35,3 +35,7 @@ select count(*),sum(price),seller_id from olist_order_items_dataset group by sel
 
 -- Finance wants payment types with either more than 10,000 transactions OR average value above 300 — either high-frequency or high-value methods.
 select count(*),payment_type,avg(payment_value) from olist_order_payments_dataset group by payment_type having count(*)>10000 or avg(payment_value)>300;
+
+
+-- The products team wants products with average price above 100 AND fewer than 20 total order items sold — expensive but low-volume, a specific segment worth flagging.
+select avg(price),count(*),product_id from olist_order_items_dataset group by product_id having count(*)<20 and avg(price)>100;
