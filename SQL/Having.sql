@@ -26,3 +26,9 @@ select count(*),order_status from olist_orders_dataset where year(order_purchase
 -- The reviews team wants review scores that appear more than 200 times, but only among reviews that actually have a written comment.
 
 select count(*),review_score from olist_order_reviews_dataset where review_comment_message  IS NOT NULL GROUP BY review_score having count(*)>200
+
+
+-- Pattern 3 — Multiple HAVING conditions (AND/OR)
+-- The sellers team wants sellers with more than 50 order items sold AND total revenue above 3000 — genuinely high-volume, high-value sellers.
+
+select count(*),sum(price),seller_id from olist_order_items_dataset group by seller_id having count(*)>50 and sum(price)>3000;
