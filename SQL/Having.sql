@@ -32,3 +32,6 @@ select count(*),review_score from olist_order_reviews_dataset where review_comme
 -- The sellers team wants sellers with more than 50 order items sold AND total revenue above 3000 — genuinely high-volume, high-value sellers.
 
 select count(*),sum(price),seller_id from olist_order_items_dataset group by seller_id having count(*)>50 and sum(price)>3000;
+
+-- Finance wants payment types with either more than 10,000 transactions OR average value above 300 — either high-frequency or high-value methods.
+select count(*),payment_type,avg(payment_value) from olist_order_payments_dataset group by payment_type having count(*)>10000 or avg(payment_value)>300;
