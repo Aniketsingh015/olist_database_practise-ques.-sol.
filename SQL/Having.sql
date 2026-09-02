@@ -16,3 +16,11 @@ select avg(payment_value),payment_type from olist_order_payments_dataset GROUP B
 -- order items priced above 20 (filter noise first, then check the group's total).
 
 select sum(price),product_id from olist_order_items_dataset where price>20 GROUP BY product_id having sum(price)>5000;
+
+
+-- Ops wants order statuses that have more than 1000 orders, but only counting orders placed in 2018.
+select count(*),order_status from olist_orders_dataset where year(order_purchase_timestamp)=2018 GROUP BY order_status HAVING count(*)>1000;
+
+
+
+
