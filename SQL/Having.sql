@@ -45,3 +45,8 @@ select avg(price),count(*),product_id from olist_order_items_dataset group by pr
 -- The payments team wants (payment_type, payment_installments) combinations used more than 100 times — their common payment patterns.
 
 select count(*),payment_type,payment_installments from olist_order_payments_dataset group by payment_type,payment_installments having count(*)>100;
+
+-- The pricing team wants (product_id, freight_value above/below 20) combinations that appear more than 5 times — i.e., products that have been shipped 
+-- at least 6 times either "cheaply" or "expensively," a meaningful volume in that shipping bracket.
+
+select count(*),product_id,freight_value>20 as freight_value_above_20 from olist_order_items_dataset group by product_id,freight_value>20 having count(*)>5;
