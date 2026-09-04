@@ -39,3 +39,9 @@ select count(*),payment_type,avg(payment_value) from olist_order_payments_datase
 
 -- The products team wants products with average price above 100 AND fewer than 20 total order items sold — expensive but low-volume, a specific segment worth flagging.
 select avg(price),count(*),product_id from olist_order_items_dataset group by product_id having count(*)<20 and avg(price)>100;
+
+
+-- Pattern 4 — HAVING with compound GROUP BY
+-- The payments team wants (payment_type, payment_installments) combinations used more than 100 times — their common payment patterns.
+
+select count(*),payment_type,payment_installments from olist_order_payments_dataset group by payment_type,payment_installments having count(*)>100;
