@@ -57,3 +57,8 @@ select count(*),product_id,freight_value>20 as freight_value_above_20 from olist
 -- review scores where the count of non-null comments is less than half the total count for that score (comparing two aggregates against each other within HAVING).
 
 select count(*),review_score,count(review_comment_message) from olist_order_reviews_dataset GROUP BY review_score having count(review_comment_message)<count(*)/2;
+
+
+-- Ops wants order statuses where the difference between total orders and delivered-only orders is significant — think about how you'd express
+--  "difference between two counts" inside HAVING.
+select order_status,count(*),count(order_delivered_customer_date) as delivered_order from olist_orders_dataset group by order_status having count(*)-delivered_order;
