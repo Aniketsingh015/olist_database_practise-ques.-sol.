@@ -62,3 +62,8 @@ select count(*),review_score,count(review_comment_message) from olist_order_revi
 -- Ops wants order statuses where the difference between total orders and delivered-only orders is significant — think about how you'd express
 --  "difference between two counts" inside HAVING.
 select order_status,count(*),count(order_delivered_customer_date) as delivered_order from olist_orders_dataset group by order_status having count(*)-delivered_order;
+
+
+-- Pattern 6 — HAVING + ORDER BY + LIMIT
+-- Leadership wants the top 3 states, but only among states that have more than 300 customers (filters out small states first, then ranks what's left).
+select count(*),customer_state from olist_customers_dataset group by customer_state having count(*)>300 ORDER BY count(*) desc LIMIT  3;
