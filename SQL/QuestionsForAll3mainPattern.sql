@@ -1,0 +1,1 @@
+-- Here, we are going to make sure that we cover all the pattern questions in this. We will cover every pattern question and every deep dive question in this file. 
