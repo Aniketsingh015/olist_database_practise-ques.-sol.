@@ -50,3 +50,10 @@ select count(*),payment_type,payment_installments from olist_order_payments_data
 -- at least 6 times either "cheaply" or "expensively," a meaningful volume in that shipping bracket.
 
 select count(*),product_id,freight_value>20 as freight_value_above_20 from olist_order_items_dataset group by product_id,freight_value>20 having count(*)>5;
+
+
+-- Pattern 5 — HAVING on a derived/computed aggregate
+-- The reviews team wants product categories... (careful — check if this needs a join) — actually, single-table version: 
+-- review scores where the count of non-null comments is less than half the total count for that score (comparing two aggregates against each other within HAVING).
+
+select count(*),review_score,count(review_comment_message) from olist_order_reviews_dataset GROUP BY review_score having count(review_comment_message)<count(*)/2;
