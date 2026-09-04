@@ -67,3 +67,7 @@ select order_status,count(*),count(order_delivered_customer_date) as delivered_o
 -- Pattern 6 — HAVING + ORDER BY + LIMIT
 -- Leadership wants the top 3 states, but only among states that have more than 300 customers (filters out small states first, then ranks what's left).
 select count(*),customer_state from olist_customers_dataset group by customer_state having count(*)>300 ORDER BY count(*) desc LIMIT  3;
+
+
+-- The sellers team wants the top 5 sellers by revenue, but only considering sellers who've sold at least 20 items (excludes one-off/negligible sellers from the ranking).
+select count(*),seller_id,sum(price) from olist_order_items_dataset group by seller_id having count(*)>20 ORDER BY sum(price) desc limit 5;
