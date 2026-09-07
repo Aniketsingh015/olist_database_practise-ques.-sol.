@@ -27,3 +27,7 @@ select o.order_id,c.customer_city,c.customer_id from olist_customers_dataset c I
 -- The logistics team wants the product_category_name for every order item, but only for order items priced above 300.
 
 select p.product_category_name,o.order_id,o.order_item_id from olist_order_items_dataset as o INNER JOIN olist_products_dataset as p on p.product_id=o.product_id where o.price>300
+
+
+-- Finance wants to see payment details, but only for payments belonging to orders with order_status = 'delivered'.
+select p.payment_type,p.payment_value,o.order_id,o.order_status from olist_order_payments_dataset as p inner join olist_orders_dataset as o on p.order_id=o.order_id where o.order_status='delivered';
