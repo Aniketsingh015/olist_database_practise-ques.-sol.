@@ -21,3 +21,9 @@ select o.order_id ,s.seller_city,s.seller_state,s.seller_id from olist_sellers_d
 -- Marketing wants to see, for every order, the customer_city of the customer who placed it — combine olist_orders_dataset with olist_customers_dataset.
 
 select o.order_id,c.customer_city,c.customer_id from olist_customers_dataset c INNER JOIN olist_orders_dataset o on o.customer_id=c.customer_id;
+
+
+-- Pattern 2 — INNER JOIN + WHERE
+-- The logistics team wants the product_category_name for every order item, but only for order items priced above 300.
+
+select p.product_category_name,o.order_id,o.order_item_id from olist_order_items_dataset as o INNER JOIN olist_products_dataset as p on p.product_id=o.product_id where o.price>300
