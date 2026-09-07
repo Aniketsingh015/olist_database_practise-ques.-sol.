@@ -41,3 +41,10 @@ select s.seller_city,s.seller_state,o.order_id,o.order_item_id from olist_order_
 
 -- Marketing wants customer city for every order, but only for orders placed in the year 2018.
 select c.customer_city,o.order_id from olist_customers_dataset as c inner join olist_orders_dataset as o on o.customer_id=c.customer_id where year(order_purchase_timestamp)=2018;
+
+
+-- The category team wants product category names, but only 
+-- for order items where the associated product has product_weight_g above 5000 (heavy items) — combine order_items with products, filter on weight.
+
+select p.product_category_name,o.order_id,o.order_item_id from olist_products_dataset as p inner join olist_order_items_dataset as o on p.product_id=o.product_id
+where product_weight_g>5000;
