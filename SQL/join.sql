@@ -38,3 +38,6 @@ on o.order_id=r.order_id where o.order_status='canceled';
 
 -- The sellers team wants seller city and state, but only for order items with freight_value above 100 — high-shipping-cost items.
 select s.seller_city,s.seller_state,o.order_id,o.order_item_id from olist_order_items_dataset as o INNER JOIN olist_sellers_dataset as s on o.seller_id=s.seller_id where o.freight_value>100
+
+-- Marketing wants customer city for every order, but only for orders placed in the year 2018.
+select c.customer_city,o.order_id from olist_customers_dataset as c inner join olist_orders_dataset as o on o.customer_id=c.customer_id where year(order_purchase_timestamp)=2018;
