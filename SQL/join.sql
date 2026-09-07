@@ -16,3 +16,8 @@ select r.review_id,r.review_comment_message,o.order_id,o.order_status from olist
 -- The sellers team wants to see, for every order item, the seller_city and seller_state of the seller who sold it — combine olist_order_items_dataset with olist_sellers_dataset.
 
 select o.order_id ,s.seller_city,s.seller_state,s.seller_id from olist_sellers_dataset as s inner join olist_order_items_dataset o on o.seller_id=s.seller_id; 
+
+
+-- Marketing wants to see, for every order, the customer_city of the customer who placed it — combine olist_orders_dataset with olist_customers_dataset.
+
+select o.order_id,c.customer_city,c.customer_id from olist_customers_dataset c INNER JOIN olist_orders_dataset o on o.customer_id=c.customer_id;
