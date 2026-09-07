@@ -35,3 +35,6 @@ select p.payment_type,p.payment_value,o.order_id,o.order_status from olist_order
 -- The reviews team wants to see review scores and comments, but only for reviews left on orders that were 'canceled' — investigating dissatisfaction on failed orders.
 select r.review_score,r.review_id,r.review_comment_message,o.order_id,o.order_status from olist_order_reviews_dataset as r INNER JOIN olist_orders_dataset as o
 on o.order_id=r.order_id where o.order_status='canceled';
+
+-- The sellers team wants seller city and state, but only for order items with freight_value above 100 — high-shipping-cost items.
+select s.seller_city,s.seller_state,o.order_id,o.order_item_id from olist_order_items_dataset as o INNER JOIN olist_sellers_dataset as s on o.seller_id=s.seller_id where o.freight_value>100
