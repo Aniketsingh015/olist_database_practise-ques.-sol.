@@ -48,3 +48,9 @@ select c.customer_city,o.order_id from olist_customers_dataset as c inner join o
 
 select p.product_category_name,o.order_id,o.order_item_id from olist_products_dataset as p inner join olist_order_items_dataset as o on p.product_id=o.product_id
 where product_weight_g>5000;
+
+
+
+-- Ops wants order status and customer state, but only for customers based in 'SP' or 'RJ'.
+select o.order_id,o.order_status,c.customer_id,c.customer_city,c.customer_state from olist_customers_dataset as c inner join olist_orders_dataset as o on o.customer_id=c.customer_id
+where c.customer_state in ('SP','RJ');
