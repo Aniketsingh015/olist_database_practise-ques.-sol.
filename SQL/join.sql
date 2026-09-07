@@ -54,3 +54,8 @@ where product_weight_g>5000;
 -- Ops wants order status and customer state, but only for customers based in 'SP' or 'RJ'.
 select o.order_id,o.order_status,c.customer_id,c.customer_city,c.customer_state from olist_customers_dataset as c inner join olist_orders_dataset as o on o.customer_id=c.customer_id
 where c.customer_state in ('SP','RJ');
+
+-- The pricing team wants seller state and price, but only for order items priced between 50 and 150.
+
+select s.seller_id,s.seller_state,o.price,o.order_id from olist_sellers_dataset as s inner join olist_order_items_dataset as o on o.seller_id=s.seller_id
+where o.price between 50 and 150;
