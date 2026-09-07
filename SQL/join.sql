@@ -31,3 +31,7 @@ select p.product_category_name,o.order_id,o.order_item_id from olist_order_items
 
 -- Finance wants to see payment details, but only for payments belonging to orders with order_status = 'delivered'.
 select p.payment_type,p.payment_value,o.order_id,o.order_status from olist_order_payments_dataset as p inner join olist_orders_dataset as o on p.order_id=o.order_id where o.order_status='delivered';
+
+-- The reviews team wants to see review scores and comments, but only for reviews left on orders that were 'canceled' — investigating dissatisfaction on failed orders.
+select r.review_score,r.review_id,r.review_comment_message,o.order_id,o.order_status from olist_order_reviews_dataset as r INNER JOIN olist_orders_dataset as o
+on o.order_id=r.order_id where o.order_status='canceled';
