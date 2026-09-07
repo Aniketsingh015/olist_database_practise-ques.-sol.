@@ -12,3 +12,7 @@ select p.payment_type,p.payment_value,o.order_id,o.order_status from olist_order
 -- The reviews team wants to see, for every review, the order_status of the order it was left on — combine olist_order_reviews_dataset with olist_orders_dataset.
 
 select r.review_id,r.review_comment_message,o.order_id,o.order_status from olist_order_reviews_dataset as r inner join olist_orders_dataset as o on o.order_id=r.order_id;
+
+-- The sellers team wants to see, for every order item, the seller_city and seller_state of the seller who sold it — combine olist_order_items_dataset with olist_sellers_dataset.
+
+select o.order_id ,s.seller_city,s.seller_state,s.seller_id from olist_sellers_dataset as s inner join olist_order_items_dataset o on o.seller_id=s.seller_id; 
