@@ -111,3 +111,6 @@ select p.product_id,o.order_id from olist_products_dataset as p left join olist_
 
 -- Show every customer along with the order_id of orders they've placed — but don't drop customers who have never placed an order.
 select c.customer_id,o.order_id from olist_customers_dataset as c Left join olist_orders_dataset as o on c.customer_id=o.customer_id;
+
+-- Show every order item along with its review score (via the order it belongs to) — but don't drop order items whose order was never reviewed.
+select o.order_item_id,r.review_score from olist_order_items_dataset as o left join olist_order_reviews_dataset as r on o.order_id=r.order_id;
