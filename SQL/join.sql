@@ -89,3 +89,6 @@ select sum(p.payment_type),o.order_status from olist_order_payments_dataset as p
 -- The sellers team wants: total revenue per seller state — which regions are generating the most sales.
 
 select sum(price),s.seller_state from olist_sellers_dataset as s inner join olist_order_items_dataset as o on o.seller_id=s.seller_id GROUP BY s.seller_state;
+
+-- The pricing team wants: average price per product category name — which categories tend to be premium vs budget.
+select avg(o.price),p.product_category_name from olist_order_items_dataset as o inner join olist_products_dataset as p on o.product_id=p.product_id GROUP BY p.product_category_name;
