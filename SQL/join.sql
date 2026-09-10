@@ -114,3 +114,12 @@ select c.customer_id,o.order_id from olist_customers_dataset as c Left join olis
 
 -- Show every order item along with its review score (via the order it belongs to) — but don't drop order items whose order was never reviewed.
 select o.order_item_id,r.review_score from olist_order_items_dataset as o left join olist_order_reviews_dataset as r on o.order_id=r.order_id;
+
+-- Pattern 5 — LEFT JOIN + IS NULL (anti-join)
+
+-- The sellers performance team wants a list of sellers who have never sold anything — completely inactive accounts they might want to follow up with or remove.
+select s.seller_id,o.order_id from olist_sellers_dataset as s left join olist_order_items_dataset as o on s.seller_id=o.seller_id where o.order_id is null;
+
+-- The catalog team wants to find products that have never been ordered — dead inventory they might want to discontinue or promote.
+select p.product_id,o.order_id from olist_products_dataset as p left join olist_order_items_dataset as o on p.product_id=o.product_id where o.order_id is null;
+
