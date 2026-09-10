@@ -105,3 +105,5 @@ select count(*),o.order_status from olist_order_reviews_dataset as r inner join 
 
 select s.seller_id ,o.order_id from olist_sellers_dataset as s left join olist_order_items_dataset as o on o.seller_id=s.seller_id; 
 
+-- Show every product along with the order_id of any order item containing it — but don't drop products that have never been ordered.
+select p.product_id,o.order_id from olist_products_dataset as p left join olist_order_items_dataset as o  on o.product_id=p.product_id;
