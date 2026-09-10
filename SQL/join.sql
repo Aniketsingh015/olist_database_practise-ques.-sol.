@@ -107,3 +107,7 @@ select s.seller_id ,o.order_id from olist_sellers_dataset as s left join olist_o
 
 -- Show every product along with the order_id of any order item containing it — but don't drop products that have never been ordered.
 select p.product_id,o.order_id from olist_products_dataset as p left join olist_order_items_dataset as o  on o.product_id=p.product_id;
+
+
+-- Show every customer along with the order_id of orders they've placed — but don't drop customers who have never placed an order.
+select c.customer_id,o.order_id from olist_customers_dataset as c Left join olist_orders_dataset as o on c.customer_id=o.customer_id;
