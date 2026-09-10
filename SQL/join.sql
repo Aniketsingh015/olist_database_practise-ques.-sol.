@@ -123,3 +123,5 @@ select s.seller_id,o.order_id from olist_sellers_dataset as s left join olist_or
 -- The catalog team wants to find products that have never been ordered — dead inventory they might want to discontinue or promote.
 select p.product_id,o.order_id from olist_products_dataset as p left join olist_order_items_dataset as o on p.product_id=o.product_id where o.order_id is null;
 
+-- The growth team wants to identify customers who signed up but never placed a single order — a re-engagement campaign target list.
+select c.customer_id,o.order_id from olist_customers_dataset as c left join olist_orders_dataset as o on c.customer_id=o.customer_id where o.order_id is null;
