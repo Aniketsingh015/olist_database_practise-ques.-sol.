@@ -74,3 +74,18 @@ select count(*),c.customer_state from olist_customers_dataset as c inner join ol
 
 -- The reviews team wants to know if certain order statuses correlate with worse satisfaction: average review score per order status.
 select avg(r.review_score),o.order_status from olist_order_reviews_dataset as r inner join olist_orders_dataset as o on o.order_id=r.order_id group by o.order_status;
+
+
+-- The logistics team wants: average freight value per seller state — to see which regions have the most expensive shipping.
+
+select avg(o.freight_value),s.seller_state from olist_order_items_dataset as o inner join olist_sellers_dataset as s on o.seller_id=s.seller_id GROUP BY s.seller_state;
+
+
+-- Finance wants: total payment value per order status — how much money is tied up in orders that are still processing, cancelled, etc., versus delivered.
+
+select sum(p.payment_type),o.order_status from olist_order_payments_dataset as p inner join olist_orders_dataset as o on o.order_id=p.order_id GROUP BY o.order_status;
+
+
+-- The sellers team wants: total revenue per seller state — which regions are generating the most sales.
+
+select sum(price),s.seller_state from olist_sellers_dataset as s inner join olist_order_items_dataset as o on o.seller_id=s.seller_id GROUP BY s.seller_state;
