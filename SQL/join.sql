@@ -134,3 +134,7 @@ select o.order_id,r.review_id from olist_orders_dataset as o left join olist_ord
 select o.order_id,p.payment_type from olist_orders_dataset as o left join olist_order_payments_dataset as p on o.order_id=p.order_id where p.order_id is null;
 
 
+-- The logistics team wants to know which sellers have items in the catalog but have never actually had an order item recorded against them — same underlying question as #1, 
+-- just phrased differently, to test if you recognize it's the identical pattern.
+
+select s.seller_id,o.order_item_id from olist_sellers_dataset as s left join olist_order_items_dataset as o on s.seller_id=o.seller_id where o.seller_id is null;
