@@ -71,3 +71,6 @@ select sum(o.price),p.product_id,p.product_category_name from olist_products_dat
 
 -- Regional operations wants: how many orders exist per customer state — the exact question that got queued back when we first hit the JOIN wall.
 select count(*),c.customer_state from olist_customers_dataset as c inner join olist_orders_dataset as o on c.customer_id=o.customer_id group by c.customer_state;
+
+-- The reviews team wants to know if certain order statuses correlate with worse satisfaction: average review score per order status.
+select avg(r.review_score),o.order_status from olist_order_reviews_dataset as r inner join olist_orders_dataset as o on o.order_id=r.order_id group by o.order_status;
