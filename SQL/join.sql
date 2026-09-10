@@ -95,3 +95,13 @@ select avg(o.price),p.product_category_name from olist_order_items_dataset as o 
 
 -- Ops wants: count of reviews per order status — do cancelled orders still generate reviews? How many?
 select count(*),o.order_status from olist_order_reviews_dataset as r inner join olist_orders_dataset as o on o.order_id=r.order_id GROUP BY o.order_status;
+
+
+
+
+-- Pattern 4 — LEFT JOIN questions
+-- Show every seller along with the order_id of items they've sold — but don't drop sellers who haven't sold anything yet.
+
+
+select s.seller_id ,o.order_id from olist_sellers_dataset as s left join olist_order_items_dataset as o on o.seller_id=s.seller_id; 
+
