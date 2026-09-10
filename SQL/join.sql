@@ -69,3 +69,5 @@ where o.price between 50 and 150;
 select sum(o.price),p.product_id,p.product_category_name from olist_products_dataset as p inner join olist_order_items_dataset as o on o.product_id=p.product_id group by p.product_category_name,p.product_id; 
 
 
+-- Regional operations wants: how many orders exist per customer state — the exact question that got queued back when we first hit the JOIN wall.
+select count(*),c.customer_state from olist_customers_dataset as c inner join olist_orders_dataset as o on c.customer_id=o.customer_id group by c.customer_state;
