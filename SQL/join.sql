@@ -92,3 +92,6 @@ select sum(price),s.seller_state from olist_sellers_dataset as s inner join olis
 
 -- The pricing team wants: average price per product category name — which categories tend to be premium vs budget.
 select avg(o.price),p.product_category_name from olist_order_items_dataset as o inner join olist_products_dataset as p on o.product_id=p.product_id GROUP BY p.product_category_name;
+
+-- Ops wants: count of reviews per order status — do cancelled orders still generate reviews? How many?
+select count(*),o.order_status from olist_order_reviews_dataset as r inner join olist_orders_dataset as o on o.order_id=r.order_id GROUP BY o.order_status;
