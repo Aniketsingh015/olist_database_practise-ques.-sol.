@@ -132,3 +132,5 @@ select o.order_id,r.review_id from olist_orders_dataset as o left join olist_ord
 
 -- Finance wants to flag orders with no payment record — a potential data integrity issue worth investigating (every order should logically have a payment).
 select o.order_id,p.payment_type from olist_orders_dataset as o left join olist_order_payments_dataset as p on o.order_id=p.order_id where p.order_id is null;
+
+
