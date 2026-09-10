@@ -125,3 +125,6 @@ select p.product_id,o.order_id from olist_products_dataset as p left join olist_
 
 -- The growth team wants to identify customers who signed up but never placed a single order — a re-engagement campaign target list.
 select c.customer_id,o.order_id from olist_customers_dataset as c left join olist_orders_dataset as o on c.customer_id=o.customer_id where o.order_id is null;
+
+-- Ops wants to find orders that have no review at all — to understand how much of their order volume goes completely unreviewed.
+select o.order_id,r.review_id from olist_orders_dataset as o left join olist_order_reviews_dataset as r on o.order_id=r.order_id where r.review_id is null;
