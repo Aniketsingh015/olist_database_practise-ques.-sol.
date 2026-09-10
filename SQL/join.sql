@@ -59,3 +59,13 @@ where c.customer_state in ('SP','RJ');
 
 select s.seller_id,s.seller_state,o.price,o.order_id from olist_sellers_dataset as s inner join olist_order_items_dataset as o on o.seller_id=s.seller_id
 where o.price between 50 and 150;
+
+
+
+-- Pattern 3 — INNER JOIN + GROUP BY
+-- The category management team finally wants what they originally asked for at the start of this whole project: 
+-- total revenue per product category name (readable English names, not raw category codes).
+
+select sum(o.price),p.product_id,p.product_category_name from olist_products_dataset as p inner join olist_order_items_dataset as o on o.product_id=p.product_id group by p.product_category_name,p.product_id; 
+
+
