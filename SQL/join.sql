@@ -171,3 +171,11 @@ FROM olist_order_items_dataset AS o
 INNER JOIN olist_products_dataset AS p ON o.product_id = p.product_id
 GROUP BY p.product_category_name
 HAVING SUM(o.price) > 10000;
+
+
+-- Find seller states where the average freight value is above 30.
+select s.seller_state,avg(freight_value) from olist_order_items_dataset
+as o
+inner join olist_sellers_dataset as s on s.seller_id=o.seller_id
+GROUP BY s.seller_state
+having avg(freight_value)>30;
