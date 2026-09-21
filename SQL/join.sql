@@ -161,3 +161,5 @@ inner join olist_products_dataset as p on p.product_id=o.product_id
 inner join olist_sellers_dataset as s on s.seller_id=o.seller_id;
 
 -- "Find seller states where total revenue exceeds 50,000."
+inner join olist_sellers_dataset as s on s.seller_id=o.seller_id;
+
