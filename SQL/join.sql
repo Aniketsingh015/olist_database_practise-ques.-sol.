@@ -149,3 +149,5 @@ inner join olist_sellers_dataset as s on s.seller_id=o.seller_id;
 select o.order_id,c.customer_state,o.order_status,p.payment_type from olist_orders_dataset as o
 inner join olist_customers_dataset as c on c.customer_id=o.customer_id
 inner join olist_order_payments_dataset as p on o.order_id=p.order_id;
+
+-- 
