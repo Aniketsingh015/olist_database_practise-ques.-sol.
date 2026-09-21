@@ -138,3 +138,14 @@ select o.order_id,p.payment_type from olist_orders_dataset as o left join olist_
 -- just phrased differently, to test if you recognize it's the identical pattern.
 
 select s.seller_id,o.order_item_id from olist_sellers_dataset as s left join olist_order_items_dataset as o on s.seller_id=o.seller_id where o.seller_id is null;
+
+-- pattern 6 3 table joins 
+-- Show order_id, product_category_name, and seller_state for every order item.
+select o.order_id,p.product_category_name,s.seller_state from olist_order_items_dataset as o 
+inner join olist_products_dataset as p on o.product_id=p.product_id
+inner join olist_sellers_dataset as s on s.seller_id=o.seller_id;
+
+-- Show order_id, customer_state, order_status, and payment_type for every order — needs orders, customers, AND payments chained together.
+select o.order_id,c.customer_state,o.order_status,p.payment_type from olist_orders_dataset as o
+inner join olist_customers_dataset as c on c.customer_id=o.customer_id
+inner join olist_order_payments_dataset as p on o.order_id=p.order_id;
