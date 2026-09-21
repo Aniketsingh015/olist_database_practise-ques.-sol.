@@ -179,3 +179,10 @@ as o
 inner join olist_sellers_dataset as s on s.seller_id=o.seller_id
 GROUP BY s.seller_state
 having avg(freight_value)>30;
+
+
+-- Find customer states where more than 2,000 orders were placed.
+select c.customer_state,count(o.order_id) from olist_orders_dataset as o
+inner join olist_customers_dataset as c on c.customer_id=o.customer_id
+GROUP BY c.customer_state 
+having count(o.order_id) >2000;
