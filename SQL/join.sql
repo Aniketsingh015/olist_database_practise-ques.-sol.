@@ -150,4 +150,7 @@ select o.order_id,c.customer_state,o.order_status,p.payment_type from olist_orde
 inner join olist_customers_dataset as c on c.customer_id=o.customer_id
 inner join olist_order_payments_dataset as p on o.order_id=p.order_id;
 
--- 
+-- Show review_score, order_status, and customer_state for every review — needs reviews, orders, AND customers.
+select r.review_score,o.order_status,c.customer_state from olist_orders_dataset as o
+inner join olist_order_reviews_dataset as r on o.order_id=r.order_id
+inner join olist_customers_dataset as c on o.customer_id=c.customer_id;
