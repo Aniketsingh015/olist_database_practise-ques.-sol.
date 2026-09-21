@@ -161,5 +161,13 @@ inner join olist_products_dataset as p on p.product_id=o.product_id
 inner join olist_sellers_dataset as s on s.seller_id=o.seller_id;
 
 -- "Find seller states where total revenue exceeds 50,000."
-inner join olist_sellers_dataset as s on s.seller_id=o.seller_id;
+select s.seller_state,sum(o.price) from olist_order_items_dataset as o
+inner join olist_sellers_dataset as s on s.seller_id=o.seller_id
+GROUP BY s.seller_state having sum(o.price)>50000;
 
+-- Find product categories where total revenue exceeds 10,000.
+SELECT p.product_category_name, SUM(o.price)
+FROM olist_order_items_dataset AS o
+INNER JOIN olist_products_dataset AS p ON o.product_id = p.product_id
+GROUP BY p.product_category_name
+HAVING SUM(o.price) > 10000;
