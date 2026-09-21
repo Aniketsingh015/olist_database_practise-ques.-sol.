@@ -154,3 +154,10 @@ inner join olist_order_payments_dataset as p on o.order_id=p.order_id;
 select r.review_score,o.order_status,c.customer_state from olist_orders_dataset as o
 inner join olist_order_reviews_dataset as r on o.order_id=r.order_id
 inner join olist_customers_dataset as c on o.customer_id=c.customer_id;
+
+-- Show product_category_name, price, and seller_city for every order item — needs order_items, products, AND sellers.
+select p.product_category_name,o.price,s.seller_city from olist_order_items_dataset as o
+inner join olist_products_dataset as p on p.product_id=o.product_id
+inner join olist_sellers_dataset as s on s.seller_id=o.seller_id;
+
+-- "Find seller states where total revenue exceeds 50,000."
