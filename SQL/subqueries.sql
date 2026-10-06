@@ -4,3 +4,7 @@ select order_item_id,price from olist_order_items_dataset where price>(select av
 
 -- Finance wants every payment whose value is below the average payment value.
 select payment_type, payment_value from olist_order_payments_dataset where payment_value <(Select avg(payment_value) from olist_order_payments_dataset);
+
+
+-- The reviews team wants every review with a score below the overall average score.
+select DISTINCT review_score,review_id from olist_order_reviews_dataset where review_score<(select avg (review_score) from olist_order_reviews_dataset);
