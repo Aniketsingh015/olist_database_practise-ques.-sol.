@@ -17,3 +17,8 @@ select order_item_id,price from olist_order_items_dataset where price=(select ma
 
 -- Finance wants every payment above the average value of credit card payments only, whichever payment type the row itself has.
 select payment_value,payment_type from olist_order_payments_dataset where payment_value > (select avg(payment_value) from olist_order_payments_dataset where payment_type="credit_card");
+
+
+-- Ops wants the most recently placed order(s), meaning orders whose purchase timestamp equals the latest timestamp in the table.
+select order_id from olist_orders_dataset where order_purchase_timestamp=(SELECT MAX(order_purchase_timestamp)
+    FROM olist_orders_dataset);
