@@ -22,3 +22,6 @@ select payment_value,payment_type from olist_order_payments_dataset where paymen
 -- Ops wants the most recently placed order(s), meaning orders whose purchase timestamp equals the latest timestamp in the table.
 select order_id from olist_orders_dataset where order_purchase_timestamp=(SELECT MAX(order_purchase_timestamp)
     FROM olist_orders_dataset);
+
+-- The catalog team wants every product heavier than the average product weight
+select product_id,product_category_name from olist_products_dataset where product_weight_g>(select avg(product_weight_g)from olist_products_dataset);
