@@ -25,3 +25,11 @@ select order_id from olist_orders_dataset where order_purchase_timestamp=(SELECT
 
 -- The catalog team wants every product heavier than the average product weight
 select product_id,product_category_name from olist_products_dataset where product_weight_g>(select avg(product_weight_g)from olist_products_dataset);
+
+-- The pricing team wants 'premium outliers': order items priced at more than double the average price
+select product_id from olist_order_items_dataset where price>2*(select avg(price) from olist_order_items_dataset);
+
+-- The category team wants every order item priced above the average item price, showing the product category name next to it.
+
+select p.product_id,p.product_category_name,o.price from olist_products_dataset as p inner join olist_order_items_dataset as o on p.product_id=o.product_id
+where price>(select avg(price) from olist_order_items_dataset);
