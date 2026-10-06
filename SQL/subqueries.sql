@@ -11,3 +11,9 @@ select DISTINCT review_score,review_id from olist_order_reviews_dataset where re
 
 -- Logistics wants every order item whose freight_value is higher than the average freight value.
 select order_item_id,freight_value from olist_order_items_dataset where freight_value >(select avg(freight_value) from olist_order_items_dataset);
+
+-- The pricing team wants the most expensive order item(s), meaning every item whose price equals the highest price.
+select order_item_id,price from olist_order_items_dataset where price=(select max(price)from olist_order_items_dataset);
+
+-- Finance wants every payment above the average value of credit card payments only, whichever payment type the row itself has.
+select payment_value,payment_type from olist_order_payments_dataset where payment_value > (select avg(payment_value) from olist_order_payments_dataset where payment_type="credit_card");
