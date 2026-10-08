@@ -59,3 +59,7 @@ select product_id,product_category_name from olist_products_dataset where produc
 
 -- Growth wants every customer who has never placed an order.
 select customer_id,customer_state,customer_city from olist_customers_dataset where customer_id not in (select customer_id from olist_orders_dataset);
+
+-- Ops wants every order that has no review.
+
+select order_id from olist_orders_dataset where  order_id not in (select order_id from olist_order_reviews_dataset);
