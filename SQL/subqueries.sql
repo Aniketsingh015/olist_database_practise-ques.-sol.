@@ -54,3 +54,5 @@ select seller_id,seller_state from olist_sellers_dataset where seller_id in(sele
 select customer_id ,customer_state from olist_customers_dataset where customer_id in(select customer_id from olist_orders_dataset where order_status='canceled');
 
 
+-- The catalog team wants every product that has never been ordered.
+select product_id,product_category_name from olist_products_dataset where product_id not in (select product_id from olist_order_items_dataset);
