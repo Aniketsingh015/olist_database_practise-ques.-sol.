@@ -56,3 +56,6 @@ select customer_id ,customer_state from olist_customers_dataset where customer_i
 
 -- The catalog team wants every product that has never been ordered.
 select product_id,product_category_name from olist_products_dataset where product_id not in (select product_id from olist_order_items_dataset);
+
+-- Growth wants every customer who has never placed an order.
+select customer_id,customer_state,customer_city from olist_customers_dataset where customer_id not in (select customer_id from olist_orders_dataset);
