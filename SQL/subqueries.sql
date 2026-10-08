@@ -42,3 +42,10 @@ select order_id,customer_id from olist_orders_dataset where customer_id in (Sele
 
 -- Finance wants every order that was paid by voucher at least once.
 select order_id from olist_orders_dataset where order_id in (Select order_id from olist_order_payments_dataset where payment_type='voucher');
+
+-- The reviews team wants every order that received a 1-star review.
+select order_id from olist_orders_dataset where order_id in (select order_id from olist_order_reviews_dataset where review_score =1);
+
+
+-- The sellers team wants every seller who has sold at least one item priced above 1000.
+select seller_id,seller_state from olist_sellers_dataset where seller_id in(select seller_id from olist_order_items_dataset where price>1000);
