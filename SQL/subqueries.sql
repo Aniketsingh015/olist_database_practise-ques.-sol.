@@ -49,3 +49,8 @@ select order_id from olist_orders_dataset where order_id in (select order_id fro
 
 -- The sellers team wants every seller who has sold at least one item priced above 1000.
 select seller_id,seller_state from olist_sellers_dataset where seller_id in(select seller_id from olist_order_items_dataset where price>1000);
+
+-- Support wants every customer who has had an order canceled.
+select customer_id ,customer_state from olist_customers_dataset where customer_id in(select customer_id from olist_orders_dataset where order_status='canceled');
+
+
