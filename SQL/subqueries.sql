@@ -69,3 +69,7 @@ select order_id from olist_orders_dataset where  order_id not in (select order_i
 select seller_id ,seller_state,seller_city from olist_sellers_dataset where seller_state='SP' and seller_id not in (select seller_id from olist_order_items_dataset);
 
 -- Logistics wants every order that contains at least one item from a seller in RJ.
+
+SELECT order_id,order_status,order_purchase_timestamp
+FROM olist_orders_dataset
+WHERE order_id IN (select order_id from olist_order_items_dataset where seller_id in (select seller_id from olist_sellers_dataset where seller_state='RJ'));
