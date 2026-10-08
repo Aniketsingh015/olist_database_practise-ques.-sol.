@@ -37,3 +37,6 @@ where price>(select avg(price) from olist_order_items_dataset);
 
 
 -- Pattern 2: Subquery with IN / NOT IN
+-- Marketing wants every order placed by a customer from SP.
+select order_id,customer_id from olist_orders_dataset where customer_id in (Select customer_id from olist_customers_dataset where customer_state='SP');
+
