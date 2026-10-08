@@ -33,3 +33,7 @@ select product_id from olist_order_items_dataset where price>2*(select avg(price
 
 select p.product_id,p.product_category_name,o.price from olist_products_dataset as p inner join olist_order_items_dataset as o on p.product_id=o.product_id
 where price>(select avg(price) from olist_order_items_dataset);
+
+
+
+-- Pattern 2: Subquery with IN / NOT IN
