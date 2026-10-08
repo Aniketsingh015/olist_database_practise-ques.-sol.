@@ -63,3 +63,9 @@ select customer_id,customer_state,customer_city from olist_customers_dataset whe
 -- Ops wants every order that has no review.
 
 select order_id from olist_orders_dataset where  order_id not in (select order_id from olist_order_reviews_dataset);
+
+
+-- The sellers team wants sellers located in SP who have never sold anything.
+select seller_id ,seller_state,seller_city from olist_sellers_dataset where seller_state='SP' and seller_id not in (select seller_id from olist_order_items_dataset);
+
+-- Logistics wants every order that contains at least one item from a seller in RJ.
