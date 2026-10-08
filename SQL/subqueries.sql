@@ -40,3 +40,5 @@ where price>(select avg(price) from olist_order_items_dataset);
 -- Marketing wants every order placed by a customer from SP.
 select order_id,customer_id from olist_orders_dataset where customer_id in (Select customer_id from olist_customers_dataset where customer_state='SP');
 
+-- Finance wants every order that was paid by voucher at least once.
+select order_id from olist_orders_dataset where order_id in (Select order_id from olist_order_payments_dataset where payment_type='voucher');
