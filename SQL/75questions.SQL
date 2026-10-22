@@ -27,3 +27,8 @@ select review_score,order_id from olist_order_reviews_dataset where review_score
 -- 5. Which review scores have been given more than 5,000 times?
 select count(review_score),review_score from olist_order_reviews_dataset GROUP BY (review_score) having count(review_score)>5000;
 
+-- 6. Show each order placed in January 2018 together with the city of the customer who placed it.
+select o.order_id,o.order_purchase_timestamp,c.customer_city,c.customer_id from olist_orders_dataset as o
+INNER JOIN olist_customers_dataset as c ON c.customer_id=o.customer_id where year(order_purchase_timestamp)='2018'and Month(order_purchase_timestamp)=1;
+
+
