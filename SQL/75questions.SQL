@@ -13,3 +13,7 @@ select* from product_category_name_translation;
 
 -- 1. List the order_id and status of every order that was canceled or is unavailable.
 select order_id,order_status from olist_orders_dataset where order_status in ('canceled','unavailable');
+
+-- 2. How many customers are registered in each state? Show the largest states first.
+
+select count(*),customer_state from olist_customers_dataset group by customer_state order by count(*)DESC;
