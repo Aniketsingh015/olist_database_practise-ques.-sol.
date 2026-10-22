@@ -23,3 +23,7 @@ select DISTINCT customer_city from olist_customers_dataset where customer_state=
 
 -- 4. Find all reviews with a score of 1 where the customer also wrote a comment
 select review_score,order_id from olist_order_reviews_dataset where review_score=1 and review_comment_message is NOT NULL;
+
+-- 5. Which review scores have been given more than 5,000 times?
+select count(review_score),review_score from olist_order_reviews_dataset GROUP BY (review_score) having count(review_score)>5000;
+
