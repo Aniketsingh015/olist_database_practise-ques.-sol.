@@ -20,3 +20,6 @@ select count(*),customer_state from olist_customers_dataset group by customer_st
 
 -- 3. Show the distinct cities that customers live in within the state of RJ.
 select DISTINCT customer_city from olist_customers_dataset where customer_state='RJ';
+
+-- 4. Find all reviews with a score of 1 where the customer also wrote a comment
+select review_score,order_id from olist_order_reviews_dataset where review_score=1 and review_comment_message is NOT NULL;
