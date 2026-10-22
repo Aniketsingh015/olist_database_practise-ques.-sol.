@@ -73,3 +73,4 @@ select seller_id ,seller_state,seller_city from olist_sellers_dataset where sell
 SELECT order_id,order_status,order_purchase_timestamp
 FROM olist_orders_dataset
 WHERE order_id IN (select order_id from olist_order_items_dataset where seller_id in (select seller_id from olist_sellers_dataset where seller_state='RJ'));
+
