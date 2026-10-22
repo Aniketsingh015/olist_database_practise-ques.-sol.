@@ -46,3 +46,11 @@ select count(*), Month(order_purchase_timestamp)from olist_orders_dataset where 
 
 -- 9. List the customers whose city name starts with sao.
 select customer_id from olist_customers_dataset where customer_city like 'sao%';
+
+-- 10. What is the average review score for each order status?
+
+SELECT o.order_status, AVG(r.review_score)
+FROM olist_order_reviews_dataset AS r
+INNER JOIN olist_orders_dataset AS o ON o.order_id = r.order_id
+GROUP BY o.order_status;
+
