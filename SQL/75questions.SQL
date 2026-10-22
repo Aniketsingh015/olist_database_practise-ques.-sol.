@@ -12,4 +12,4 @@ select* from olist_sellers_dataset;
 select* from product_category_name_translation;
 
 -- 1. List the order_id and status of every order that was canceled or is unavailable.
-select order_id,order_status from olist_orders_dataset where order_status='canceled';
+select order_id,order_status from olist_orders_dataset where order_status in ('canceled','unavailable');
