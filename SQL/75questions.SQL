@@ -38,3 +38,8 @@ select customer_id from olist_customers_dataset where customer_id NOT IN(select 
 select c.customer_id from olist_customers_dataset as c left join olist_orders_dataset as o on c.customer_id=o.customer_id where o.customer_id is null;
 
 -- we dont do with inner join because it will not give the unmatched rows 
+
+
+-- 8. How many orders were placed in each month of 2017?
+
+select count(*), Month(order_purchase_timestamp)from olist_orders_dataset where year(order_purchase_timestamp)=2017 group by month(order_purchase_timestamp);
