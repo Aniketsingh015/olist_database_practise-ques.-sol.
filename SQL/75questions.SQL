@@ -43,3 +43,6 @@ select c.customer_id from olist_customers_dataset as c left join olist_orders_da
 -- 8. How many orders were placed in each month of 2017?
 
 select count(*), Month(order_purchase_timestamp)from olist_orders_dataset where year(order_purchase_timestamp)=2017 group by month(order_purchase_timestamp);
+
+-- 9. List the customers whose city name starts with sao.
+select customer_id from olist_customers_dataset where customer_city like 'sao%';
