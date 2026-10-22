@@ -32,3 +32,9 @@ select o.order_id,o.order_purchase_timestamp,c.customer_city,c.customer_id from 
 INNER JOIN olist_customers_dataset as c ON c.customer_id=o.customer_id where year(order_purchase_timestamp)='2018'and Month(order_purchase_timestamp)=1;
 
 
+-- 7. Which customers have never placed an order?
+select customer_id from olist_customers_dataset where customer_id NOT IN(select customer_id from olist_orders_dataset); --this is one way to solve 
+-- or --this join will give the null values with customer id who have not orderd but if we directly give is null then it will give only those ifd with null
+select c.customer_id from olist_customers_dataset as c left join olist_orders_dataset as o on c.customer_id=o.customer_id where o.customer_id is null;
+
+-- we dont do with inner join because it will not give the unmatched rows 
