@@ -54,3 +54,6 @@ FROM olist_order_reviews_dataset AS r
 INNER JOIN olist_orders_dataset AS o ON o.order_id = r.order_id
 GROUP BY o.order_status;
 
+
+-- 1. Which orders were delivered after their estimated delivery date?x
+select order_id from olist_orders_dataset where order_estimated_delivery_date < order_delivered_customer_date;
