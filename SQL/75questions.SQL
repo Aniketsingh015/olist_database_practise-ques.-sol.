@@ -17,3 +17,6 @@ select order_id,order_status from olist_orders_dataset where order_status in ('c
 -- 2. How many customers are registered in each state? Show the largest states first.
 
 select count(*),customer_state from olist_customers_dataset group by customer_state order by count(*)DESC;
+
+-- 3. Show the distinct cities that customers live in within the state of RJ.
+select DISTINCT customer_city from olist_customers_dataset where customer_state='RJ';
