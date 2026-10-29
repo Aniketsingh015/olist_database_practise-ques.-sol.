@@ -65,3 +65,10 @@ GROUP BY c.customer_state ORDER BY count(*) asc limit 5;
 
 -- 13. Which orders were paid in three or more separate payment entries?
 select order_id,count(*) from olist_order_payments_dataset group by order_id having count(*)>=3;
+
+-- 14. What was the average credit card payment in each month of 2017?
+select avg(p.payment_value),Month(o.order_purchase_timestamp) from olist_order_payments_dataset as p inner JOIN olist_orders_dataset as o on o.order_id=p.order_id 
+where p.payment_type='credit_card' and YEAR(order_purchase_timestamp)=2017  GROUP BY Month(o.order_purchase_timestamp);
+
+
+-- 15. Find the orders that were placed but never got an approval timestamp.
