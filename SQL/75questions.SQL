@@ -98,3 +98,7 @@ select product_weight_g,product_id from olist_products_dataset where product_wei
 
 -- 4. Which product categories have a name containing casa?
 Select product_category_name from product_category_name_translation where product_category_name  like '%casa%';
+
+
+-- 5. Who are the top 10 sellers by total revenue?
+select sum(price),seller_id from olist_order_items_dataset GROUP BY seller_id order by sum(price) desc limit 10;
