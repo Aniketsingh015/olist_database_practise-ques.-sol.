@@ -92,3 +92,6 @@ select seller_id,seller_city from olist_sellers_dataset where seller_state in ('
 
 -- 2. Which seller states have more than 50 sellers?
 select seller_state ,count(*)from olist_sellers_dataset GROUP BY seller_state having count(*)>50;
+
+-- 3. List products weighing between 500 and 2,000 grams that have a known category.
+select product_weight_g,product_id from olist_products_dataset where product_weight_g between 50 and 2000 ;
