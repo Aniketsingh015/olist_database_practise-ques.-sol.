@@ -91,3 +91,4 @@ where order_status='delivered' group by c.customer_state having count(*)>1000;
 select seller_id,seller_city from olist_sellers_dataset where seller_state in ('SP','MG','PR');
 
 -- 2. Which seller states have more than 50 sellers?
+select seller_state ,count(*)from olist_sellers_dataset GROUP BY seller_state having count(*)>50;
