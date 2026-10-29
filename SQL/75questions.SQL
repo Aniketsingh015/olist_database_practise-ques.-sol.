@@ -106,3 +106,7 @@ select sum(price),seller_id from olist_order_items_dataset GROUP BY seller_id or
 -- 6. Which sellers have never sold anything?
 select s.seller_id from olist_sellers_dataset as s left join olist_order_items_dataset as o
 on s.seller_id= o.seller_id where o.seller_id is null; --in left join it will give the id which is not null also 
+
+-- 7. Which products have never been ordered?
+select p.product_id from olist_products_dataset as p left join olist_order_items_dataset as o on p.product_id= o.product_id
+where o.product_id is null;
