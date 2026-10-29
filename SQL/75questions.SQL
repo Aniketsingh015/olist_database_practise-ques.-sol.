@@ -102,3 +102,7 @@ Select product_category_name from product_category_name_translation where produc
 
 -- 5. Who are the top 10 sellers by total revenue?
 select sum(price),seller_id from olist_order_items_dataset GROUP BY seller_id order by sum(price) desc limit 10;
+
+-- 6. Which sellers have never sold anything?
+select s.seller_id from olist_sellers_dataset as s left join olist_order_items_dataset as o
+on s.seller_id= o.seller_id where o.seller_id is null; --in left join it will give the id which is not null also 
