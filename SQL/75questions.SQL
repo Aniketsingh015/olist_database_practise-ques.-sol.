@@ -82,3 +82,12 @@ select review_score, review_comment_message is not null ,count(*) from olist_ord
 -- 17. Which customer states have more than 1,000 delivered orders?
 select  c.customer_state,count(*) from olist_orders_dataset as o inner join olist_customers_dataset as c on o.customer_id=c.customer_id 
 where order_status='delivered' group by c.customer_state having count(*)>1000;
+
+
+
+-- Scenario 2: the seller and catalogue review
+
+-- 1. Show the id and city of all sellers based in SP, MG or PR.
+select seller_id,seller_city from olist_sellers_dataset where seller_state in ('SP','MG','PR');
+
+-- 2. Which seller states have more than 50 sellers?
