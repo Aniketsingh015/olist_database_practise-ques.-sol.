@@ -73,3 +73,7 @@ where p.payment_type='credit_card' and YEAR(order_purchase_timestamp)=2017  GROU
 
 -- 15. Find the orders that were placed but never got an approval timestamp.
 select order_id ,order_purchase_timestamp from olist_orders_dataset where order_approved_at is NULL;
+
+
+-- 16.For reviews created in 2018, how many reviews did each score receive, split by whether a comment was written?
+select review_score, review_comment_message is not null ,count(*) from olist_order_reviews_dataset where year(review_creation_date)=2018 GROUP BY review_score,review_comment_message is NOT NULL;
