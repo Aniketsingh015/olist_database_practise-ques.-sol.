@@ -77,3 +77,8 @@ select order_id ,order_purchase_timestamp from olist_orders_dataset where order_
 
 -- 16.For reviews created in 2018, how many reviews did each score receive, split by whether a comment was written?
 select review_score, review_comment_message is not null ,count(*) from olist_order_reviews_dataset where year(review_creation_date)=2018 GROUP BY review_score,review_comment_message is NOT NULL;
+
+
+-- 17. Which customer states have more than 1,000 delivered orders?
+select  c.customer_state,count(*) from olist_orders_dataset as o inner join olist_customers_dataset as c on o.customer_id=c.customer_id 
+where order_status='delivered' group by c.customer_state having count(*)>1000;
