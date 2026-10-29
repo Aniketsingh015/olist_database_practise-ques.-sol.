@@ -62,3 +62,6 @@ select order_id from olist_orders_dataset where order_estimated_delivery_date < 
 -- 12. Which 5 customer states have placed the fewest orders?
 select count(*), c.customer_state from olist_orders_dataset as o inner join olist_customers_dataset as c on o.customer_id=c.customer_id
 GROUP BY c.customer_state ORDER BY count(*) asc limit 5;
+
+-- 13. Which orders were paid in three or more separate payment entries?
+select order_id,count(*) from olist_order_payments_dataset group by order_id having count(*)>=3;
