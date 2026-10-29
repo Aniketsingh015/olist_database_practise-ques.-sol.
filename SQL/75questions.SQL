@@ -72,3 +72,4 @@ where p.payment_type='credit_card' and YEAR(order_purchase_timestamp)=2017  GROU
 
 
 -- 15. Find the orders that were placed but never got an approval timestamp.
+select order_id ,order_purchase_timestamp from olist_orders_dataset where order_approved_at is NULL;
