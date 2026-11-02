@@ -117,3 +117,9 @@ select p.product_category_name from olist_products_dataset as p inner join olist
 
 -- 9. For sellers who have sold more than 100 items, how many different products has each sold?****
 select  seller_id,COUNT(DISTINCT product_id) from olist_order_items_dataset group by seller_id having count(*)>100;
+
+-- 10. For each product category, how many different sellers sell in it?
+select p.product_category_name,Count(DISTINCT seller_id) from olist_products_dataset as p inner join olist_order_items_dataset as o on p.product_id=o.product_id 
+group by p.product_category_name;
+
+-- 11. What is the most expensive single item ever sold, and which product was it?
