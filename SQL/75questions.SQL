@@ -123,3 +123,4 @@ select p.product_category_name,Count(DISTINCT seller_id) from olist_products_dat
 group by p.product_category_name;
 
 -- 11. What is the most expensive single item ever sold, and which product was it?
+select price,product_id from olist_order_items_dataset 
