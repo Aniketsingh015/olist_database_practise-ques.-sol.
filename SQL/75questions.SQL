@@ -113,3 +113,7 @@ where o.product_id is null;
 
 -- 8. Which 5 product categories have the highest average item price?
 select p.product_category_name from olist_products_dataset as p inner join olist_order_items_dataset as o on p.product_id=o.product_id group by p.product_category_name order by avg(o.price) DESC LIMIT 5;
+
+
+-- 9. For sellers who have sold more than 100 items, how many different products has each sold?****
+select  seller_id,COUNT(DISTINCT product_id) from olist_order_items_dataset group by seller_id having count(*)>100;
