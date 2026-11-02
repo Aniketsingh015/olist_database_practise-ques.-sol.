@@ -110,3 +110,6 @@ on s.seller_id= o.seller_id where o.seller_id is null; --in left join it will gi
 -- 7. Which products have never been ordered?
 select p.product_id from olist_products_dataset as p left join olist_order_items_dataset as o on p.product_id= o.product_id
 where o.product_id is null;
+
+-- 8. Which 5 product categories have the highest average item price?
+select p.product_category_name from olist_products_dataset as p inner join olist_order_items_dataset as o on p.product_id=o.product_id group by p.product_category_name order by avg(o.price) DESC LIMIT 5;
